@@ -8,7 +8,7 @@ import { FormBuilder } from '@angular/forms';
   styleUrl: './expense-list.component.scss'
 })
 export class ExpenseListComponent implements OnInit {
-   displayedColumns: string[] = ['date', 'description', 'amount', 'delete'];
+   displayedColumns: string[] = ['date', 'description', 'amount', 'edit', 'delete'];
    expenses!: any;
    expenseListForm = this.formBuilder.group({
       expenses: [[], []]
@@ -30,6 +30,10 @@ export class ExpenseListComponent implements OnInit {
          expenses: expenses
       })
      });
+  }
+
+  edit(id: any) {
+   console.log(id)
   }
 
   delete(expenses: any) {
