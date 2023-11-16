@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ExpenseService } from '../expense.service';
 import { FormBuilder, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-expense',
@@ -20,7 +21,8 @@ export class AddExpenseComponent implements OnInit {
    
    constructor(
       private expenseService: ExpenseService,
-      private formBuilder: FormBuilder
+      private formBuilder: FormBuilder,
+      public toastr: ToastrService
    ) {}
 
    ngOnInit(): void {
@@ -29,7 +31,7 @@ export class AddExpenseComponent implements OnInit {
 
    addExpense(): void {
       if (!this.addExpenseForm.valid) {
-         alert('Please complete the form.')
+         this.toastr.error('Please complete the form.', 'Error!')
          return
       } else {
          let inputParams = {
@@ -39,6 +41,7 @@ export class AddExpenseComponent implements OnInit {
 
       }
       this.expenseService.addExpense(inputParams).subscribe(() => {
+         this.toastr.success('Your expense has been successfully logged.', 'Success!')
          this.addExpenseForm.reset();
       });
       }
