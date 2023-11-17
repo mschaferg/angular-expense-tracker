@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ExpenseService } from '../expense.service';
 import { FormBuilder } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { EditExpenseDialogComponent } from '../dialogs/edit-expense-dialog/edit-expense-dialog.component';
 
 @Component({
   selector: 'app-expense-list',
@@ -16,7 +18,8 @@ export class ExpenseListComponent implements OnInit {
 
   constructor(
    private expenseService: ExpenseService,
-   private formBuilder: FormBuilder
+   private formBuilder: FormBuilder,
+   public dialog: MatDialog
    ) {}
 
   ngOnInit(): void {
@@ -33,7 +36,19 @@ export class ExpenseListComponent implements OnInit {
   }
 
   edit(id: any) {
-   console.log(id)
+   const dialogRef = this.dialog.open(EditExpenseDialogComponent, {
+      height: '600px',
+      width: '800px',
+      panelClass: 'custom-container',
+      data: {
+         id: id,
+         isDialog: true
+      }
+   });
+
+   dialogRef.afterClosed().subscribe(result=> {
+      this.getExpenses();
+   })
   }
 
   delete(expenses: any) {

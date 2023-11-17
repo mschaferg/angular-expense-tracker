@@ -9,10 +9,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTabsModule } from '@angular/material/tabs';
 import { ToastrModule } from 'ngx-toastr';
+import { EditExpenseDialogComponent } from './dialogs/edit-expense-dialog/edit-expense-dialog.component';
+import { EditExpenseModule } from './edit-expense/edit-expense.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    EditExpenseDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +25,8 @@ import { ToastrModule } from 'ngx-toastr';
     HttpClientModule,
     BrowserAnimationsModule,
     MatTabsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    EditExpenseModule
   ],
   providers: [],
   bootstrap: [AppComponent]

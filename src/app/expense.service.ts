@@ -14,6 +14,14 @@ export class ExpenseService {
       return this.http.get(`${this.apiUrl}/expenses`);
    }
 
+   getExpenseById(id: number): Observable<any> {
+      return this.http.post(`${this.apiUrl}/expenseById`, id)
+   }
+
+   updateExpense(expense: any): Observable<any> {
+      return this.http.post(`${this.apiUrl}/update`, expense)
+   }
+
    addExpense(expense: any): Observable<any> {
       return this.http.post(`${this.apiUrl}/expenses`, expense);
    }

@@ -1,0 +1,27 @@
+<div class="center">
+    <h2>Edit Expense</h2>
+    <form [formGroup]="editExpenseForm" (ngSubmit)="updateExpense()">
+       <div class="content">
+          <mat-form-field>
+             <mat-label>Description: </mat-label>
+             <input matInput formControlName="description" name="description">
+          </mat-form-field>   
+          <br>
+          <mat-form-field>
+             <mat-label>Amount: </mat-label>
+             <input matInput formControlName="amount" name="amount" type="number" >
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+             <mat-label>Date: </mat-label>
+             <input matInput [matDatepicker]="picker" formControlName="date">
+             <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+             <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          <br>
+          <div>
+             <button mat-raised-button color="primary" type="submit" class="button">Update Expense</button>
+          </div>
+       </div>
+    </form>
+ </div>
