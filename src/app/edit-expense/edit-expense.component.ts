@@ -58,10 +58,10 @@ export class EditExpenseComponent implements OnInit {
 
      }
      this.expenseService.updateExpense(inputParams).subscribe(() => {
-        this.toastr.success('Your expense has been successfully updated.', 'Success!')
      });
      if (this.data.isDialog) {
       this.dialogRef.close()
+      this.toastr.success('Your expense has been successfully updated.', 'Success!')
      }
      }
      
