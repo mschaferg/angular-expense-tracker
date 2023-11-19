@@ -1,5 +1,5 @@
 export const environment = {
-    production: false,
-    apiURL: 'http://localhost:3000',
+    production: true,
+    apiURL: 'http://node-expense-tracker-production.up.railway.app',
     secure: false
 };
