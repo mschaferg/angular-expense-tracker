@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
    providedIn: 'root'
 })
 export class ExpenseService {
-   private apiUrl = 'http://localhost:3000';
+   private apiUrl = 'http://node-expense-tracker-production.up.railway.app';
 
    constructor(private http: HttpClient) {}
 
