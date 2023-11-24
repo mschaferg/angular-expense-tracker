@@ -11,8 +11,8 @@ export class ExpenseService {
 
    constructor(private http: HttpClient) {}
 
-   getExpenses(): Observable<any>  {
-      return this.http.get(`${this.apiUrl}/expenses`);
+   getExpenses(id: any): Observable<any>  {
+      return this.http.post(`${this.apiUrl}/userExpenses`, id);
    }
 
    getExpenseById(id: number): Observable<any> {

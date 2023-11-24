@@ -1,12 +1,20 @@
-<mat-tab-group dynamicHeight (selectedTabChange)="onTabChanged($event)">
-    <mat-tab label="Add">
-        <div>
-            <app-add-expense></app-add-expense>
-        </div>
-    </mat-tab>
-    <mat-tab label="List">
-        <div>
-            <app-expense-list></app-expense-list>
-        </div>
-    </mat-tab>
-  </mat-tab-group>
+<div *ngIf="isLoggedIn == true && newUser == false">
+    <mat-tab-group dynamicHeight (selectedTabChange)="onTabChanged($event)">
+        <mat-tab label="Add">
+            <div>
+                <app-add-expense [user_id]="user_id"></app-add-expense>
+            </div>
+        </mat-tab>
+        <mat-tab label="List">
+            <div>
+                <app-expense-list [user_id]="user_id"></app-expense-list>
+            </div>
+        </mat-tab>
+    </mat-tab-group>
+</div>
+<div *ngIf="isLoggedIn == false && newUser == false" class="center">
+    <app-login (isLoggedIn)="login($event)" (isNewUser)="createUser($event)" (user_id)="getUserId($event)"></app-login>
+</div>
+<div *ngIf="isLoggedIn == false && newUser == true" class="center">
+    <app-new-user (isNewUser)="createUser($event)"></app-new-user>
+</div>

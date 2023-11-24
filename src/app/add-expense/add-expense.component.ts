@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ExpenseService } from '../expense.service';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
@@ -11,12 +11,14 @@ import { ToastrService } from 'ngx-toastr';
 export class AddExpenseComponent implements OnInit {
    addExpenseForm!: any;
 
+   @Input() user_id!: number;
+
    setFormFields() {
       this.addExpenseForm = this.formBuilder.group({
-      description: ['', [Validators.required]],
-      amount: ['', [Validators.required]],
-      date: ['', [Validators.required]],
-   })
+         description: ['', [Validators.required]],
+         amount: ['', [Validators.required]],
+         date: ['', [Validators.required]],
+      })
    }
    
    constructor(
@@ -38,7 +40,7 @@ export class AddExpenseComponent implements OnInit {
          description: this.addExpenseForm.value.description ? this.addExpenseForm.value.description : null,
          amount: this.addExpenseForm.value.amount ? this.addExpenseForm.value.amount : null,
          date: this.addExpenseForm.value.date ? this.addExpenseForm.value.date : null,
-
+         user_id: this.user_id
       }
       this.expenseService.addExpense(inputParams).subscribe(() => {
          this.toastr.success('Your expense has been successfully logged.', 'Success!')

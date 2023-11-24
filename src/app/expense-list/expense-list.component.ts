@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ExpenseService } from '../expense.service';
 import { FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
@@ -15,6 +15,7 @@ export class ExpenseListComponent implements OnInit {
    expenseListForm = this.formBuilder.group({
       expenses: [[], []]
    })
+   @Input() user_id!: number;
 
   constructor(
    private expenseService: ExpenseService,
@@ -27,7 +28,10 @@ export class ExpenseListComponent implements OnInit {
   }
 
   getExpenses(): void {
-     this.expenseService.getExpenses().subscribe((expenses) => {
+   let inputParams = {
+      user_id: this.user_id
+   }
+     this.expenseService.getExpenses(inputParams).subscribe((expenses) => {
       this.expenses = expenses
       this.expenseListForm.patchValue({
          expenses: expenses

@@ -11,22 +11,26 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { ToastrModule } from 'ngx-toastr';
 import { EditExpenseDialogComponent } from './dialogs/edit-expense-dialog/edit-expense-dialog.component';
 import { EditExpenseModule } from './edit-expense/edit-expense.module';
+import { LoginModule } from './login/login.module';
+import { NewUserModule } from './new-user/new-user.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    EditExpenseDialogComponent
+    EditExpenseDialogComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AddExpenseModule,
     ExpenseListModule,
+    LoginModule,
     HttpClientModule,
     BrowserAnimationsModule,
     MatTabsModule,
     ToastrModule.forRoot(),
-    EditExpenseModule
+    EditExpenseModule,
+    NewUserModule
   ],
   providers: [],
   bootstrap: [AppComponent]
