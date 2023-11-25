@@ -39,10 +39,14 @@ export class NewUserComponent implements OnInit {
       username: this.newUserForm.value.username ? this.newUserForm.value.username : null,
       password: this.newUserForm.value.password ? this.newUserForm.value.password : null
    }
-    this.loginService.addNewUser(inputParams).subscribe(()=> {
-      this.toastr.success('New user has been successfully created.', 'Success!')
-      this.newUserForm.reset();
-      this.isNewUser.emit(false)
+    this.loginService.addNewUser(inputParams).subscribe((success)=> {
+      if (success.statuscode == 400) {
+        this.toastr.error(`${success.message}`, 'Error!')
+      } else if (success.statuscode == 200) {
+        this.toastr.success('New user has been successfully created.', 'Success!')
+        this.newUserForm.reset();
+        this.isNewUser.emit(false)
+      }
     })
   }
 }
