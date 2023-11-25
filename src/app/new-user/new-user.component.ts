@@ -42,7 +42,7 @@ export class NewUserComponent implements OnInit {
     this.loginService.addNewUser(inputParams).subscribe((success)=> {
       if (success.statuscode == 400) {
         this.toastr.error(`${success.message}`, 'Error!')
-      } else if (success.statuscode == 200) {
+      } else {
         this.toastr.success('New user has been successfully created.', 'Success!')
         this.newUserForm.reset();
         this.isNewUser.emit(false)
