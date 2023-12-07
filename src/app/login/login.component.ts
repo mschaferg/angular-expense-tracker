@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { LoginService } from '../login.service';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-login',
@@ -27,7 +28,8 @@ export class LoginComponent implements OnInit {
      private formBuilder: FormBuilder,
      public toastr: ToastrService,
      public loginService: LoginService,
-     public router: Router
+     public router: Router,
+     public spinner: NgxSpinnerService
   ) {}
 
   ngOnInit(): void {
@@ -35,7 +37,9 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+    this.spinner.show()
     if (!this.loginForm.valid) {
+      this.spinner.hide();
       this.toastr.error('Please complete the form.', 'Error')
     } else {
       let inputParams = {
@@ -44,17 +48,15 @@ export class LoginComponent implements OnInit {
    }
     this.loginService.login(inputParams).subscribe((success)=> {
       if (success.result == true) {
+        this.spinner.hide();
         this.isLoggedIn.emit(true);
         this.user_id.emit(success.id)
       } else {
+        this.spinner.hide();
         this.toastr.error('Please enter valid credentials.', 'Error!')
       }
     })
   }
-    // else {
-    //   this.isLoggedIn.emit(true)
-    //   this.loginForm.reset()
-    // }
   }
 
   newUser() {

@@ -13,6 +13,7 @@ import { EditExpenseDialogComponent } from './dialogs/edit-expense-dialog/edit-e
 import { EditExpenseModule } from './edit-expense/edit-expense.module';
 import { LoginModule } from './login/login.module';
 import { NewUserModule } from './new-user/new-user.module';
+import { NgxSpinnerModule } from "ngx-spinner";
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { NewUserModule } from './new-user/new-user.module';
     MatTabsModule,
     ToastrModule.forRoot(),
     EditExpenseModule,
-    NewUserModule
+    NewUserModule,
+    NgxSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

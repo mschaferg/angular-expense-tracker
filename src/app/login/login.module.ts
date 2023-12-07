@@ -7,6 +7,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 
 
@@ -22,7 +23,8 @@ import { ToastrModule } from 'ngx-toastr';
     MatInputModule,
     MatButtonModule,
     BrowserAnimationsModule,
-    ToastrModule
+    ToastrModule,
+    NgxSpinnerModule
   ],
   exports: [
     LoginComponent

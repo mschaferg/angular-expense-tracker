@@ -2,11 +2,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ExpenseListRoutingModule } from './expense-list-routing.module';
 import { ExpenseListComponent } from './expense-list.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatSelectModule } from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 
 
@@ -21,7 +24,11 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatButtonModule,
     MatTableModule,
     MatIconModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    NgxSpinnerModule
   ],
   exports: [
     ExpenseListComponent
