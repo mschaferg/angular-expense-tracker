@@ -10,6 +10,7 @@
       </mat-form-field>
       <button mat-raised-button color="primary" type="submit" class="button">Convert!</button>
    </form>
+   <button mat-raised-button color="primary" (click)="exportCsv()" class="button" type="button">Export CSV to Desktop</button>
    
    <div class="table">
       <table mat-table [dataSource]="expenses">

@@ -38,6 +38,17 @@ export class ExpenseListComponent implements OnInit {
    this.getExpenses();
   }
 
+  exportCsv() {
+      this.spinner.show()
+      let inputParams = {
+         user_id: this.user_id
+      }
+      this.expenseService.exportCsv(inputParams).subscribe((expenses) => {
+         this.spinner.hide()
+         this.toastr.success('CSV complete!', 'Success!')
+      })
+  }
+
   getExpenses(): void {
    this.spinner.show()
    let inputParams = {

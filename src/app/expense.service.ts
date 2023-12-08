@@ -11,6 +11,10 @@ export class ExpenseService {
 
    constructor(private http: HttpClient) {}
 
+   exportCsv(id: any): Observable<any>  {
+      return this.http.post(`${this.apiUrl}/exportCsv`, id, {responseType: 'text'});
+   }
+
    getExpenses(id: any): Observable<any>  {
       return this.http.post(`${this.apiUrl}/userExpenses`, id);
    }
