@@ -42,6 +42,10 @@ export class AddExpenseComponent implements OnInit {
          date: this.addExpenseForm.value.date ? this.addExpenseForm.value.date : null,
          user_id: this.user_id
       }
+      if (inputParams.amount <= 0) {
+         this.toastr.error('Please enter a number greater than zero.', 'Error!')
+         return
+     }
       this.expenseService.addExpense(inputParams).subscribe(() => {
          this.toastr.success('Your expense has been successfully logged.', 'Success!')
          this.addExpenseForm.reset();

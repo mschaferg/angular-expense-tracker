@@ -54,8 +54,11 @@ export class EditExpenseComponent implements OnInit {
         description: this.editExpenseForm.value.description ? this.editExpenseForm.value.description : null,
         amount: this.editExpenseForm.value.amount ? this.editExpenseForm.value.amount : null,
         date: this.editExpenseForm.value.date ? this.editExpenseForm.value.date : null,
-        id: this.expenseId? this.expenseId : null,
-
+        id: this.expenseId ? this.expenseId : null,
+     }
+     if (inputParams.amount <= 0) {
+         this.toastr.error('Please enter a number greater than zero.', 'Error!')
+         return
      }
      this.expenseService.updateExpense(inputParams).subscribe(() => {
      });
